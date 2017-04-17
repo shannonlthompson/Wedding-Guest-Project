@@ -41,7 +41,7 @@ p {
 }
 
 #intro, #closing {
-    background-image: url("../images/blue_background.jpeg");
+    background-image: url("images/blue_background.jpeg");
     padding: 10px 0 10px;
 }
 

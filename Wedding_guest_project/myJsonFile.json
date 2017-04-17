@@ -52,33 +52,48 @@
     }]
   ], {
   "name": "Shannon T",
-  "status": "yes",
+  "stat": "yes",
+  "party": "5",
   "type": "bride",
   "street": "3224 Marber Ave",
+  "city": "Long Beach",
   "state": "CA",
   "zip": "90808"
 }, {
   "name": "Janie",
-  "status": "no",
+  "stat": "no",
+  "party": "1",
   "type": "groom",
   "street": "123 Easy St",
+  "city": "Long Beach",
   "state": "NV",
   "zip": "98398"
 }, {
   "name": "Farhad T",
-  "status": "yes",
+  "stat": "yes",
+  "party": "3",
   "type": "groom",
   "street": "77 Almaden Ave",
+  "city": "Long Beach",
   "state": "CA",
   "zip": "90808"
 }, {
   "name": "Joe",
-  "status": "no",
+  "stat": "no",
+  "party": "1",
   "type": "groom",
   "street": "183 St",
+  "city": "Long Beach",
+  "state": "ND",
+  "zip": "99802"
+}, {
+  "name": "Susan",
+  "stat": "yes",
+  "party": "1",
+  "type": "groom",
+  "street": "183 St",
+  "city": "Long Beach",
   "state": "ND",
   "zip": "99802"
 }
-
-
 ]

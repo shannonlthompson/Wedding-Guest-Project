@@ -1,75 +1,149 @@
 /**
  * Created by sthompson on 4/11/17.
  */
-
-var router = require("./router.js");
-//Problem: We need a simple way to look at a user's badge count and JavaScript point from a web browser
-//Solution: Use Node.js to perform the profile look ups and server our template via HTTP
-
 //Create a web server
-var http = require('http');
-http.createServer(function (request, response) {
-    router.home(request, response);
-    router.user(request, response);
-}).listen(3000);
-console.log('Server running at http://<workspace-url>/');
-
-
+const renderer = require("./renderer.js");
+//const retrieve = require("./retrieve_content.js");
+const http = require('http');
 //Storing data:
 const fs = require('fs');
-const myObj = require("./JSON_sample.json");
-let body = '';
-let masterArray = [];
+const commonHeader = {'Content-type': 'text/html'};
 
-function printMessage(username, badgeCount, points) {
-    const message = `${username} has ${badgeCount} total badge(s) and ${points} points in JavaScript`;
-    console.log(message);
-}
+//let starting_content = ["<h1>There are no guests in your list. Please complete the form above to start your guest list!</h1>"];
 
-const getFileContent = () => {
-    fs.readFile("./JSON_sample.json", (err, data) => {
+
+
+http.createServer(function (request, response) {
+    response.writeHead(200, commonHeader);
+    view("header", {}, response);
+    try {
+        findContent("main", {}, response, onFindContentDone);
+    } catch(err){
+        console.error(err);
+    }
+    view("footer", {}, response);
+    response.end();
+    console.log('Server running at http://localhost:3000/');
+}).listen(3000);
+
+const findContent = (templateName, content, response, callback) => {
+    //console.log("Finding content");
+    content = fs.readFileSync('./views/' + templateName + '.html', {encoding: "utf8"});
+    //console.log("End of findContent function");
+    // console.log("IN MERGEVALUES. Here's the content: "+ content);
+    //getFileContent start
+    callback(templateName, content, response, processContent);
+};
+
+const processContent = (templateName, content, response, callback) => {
+    console.log("Processing content");
+    let body = fs.readFileSync("./myJsonFile.json");
+        let masterArray = JSON.parse(body);
+        // console.log("length of masterArray: " + masterArray.length);
+        //console.log("here's the master array: "+ masterArray);
+        // console.log("in createDivs" + masterArray);
+        let divs = [];
+        //Explain why it starts at 2
+        for (let i = 2; i < masterArray.length; i++) {
+            let name = masterArray[i].name;
+            let status = masterArray[i].stat;
+            let party = masterArray[i].party;
+            let type = masterArray[i].type;
+            let street = masterArray[i].street;
+            let city = masterArray[i].city;
+            let state = masterArray[i].state;
+            let zip = masterArray[i].zip;
+            let newDiv = "<div class=project " + status +" " +  type + ">" +
+                "<li>" + name + "</li>" +
+                "<li>" + party + "</li>" +
+                "<li>" + street + "</li>" +
+                "<li>" + city + ", " + state + " " + zip + "</li>" +
+                "</div>";
+            divs.push(newDiv);
+            //console.log("This is the new div: " + newDiv);
+        }
+        //console.log("returning " + divs.length + " divs from getFileContent: " + divs);
+        let guest_list = '';
+        //console.log("Merging values");
+        for(let i = 0; i<divs.length; i++) {
+            //  console.log("value: " + values[i]);
+            guest_list += divs[i];
+        }
+        //console.log("guest_list: " + guest_list);
+        content = content.replace("{{guest_list}}", guest_list);
+    //console.log(content);
+    callback(templateName, content, response);
+};
+
+/*const processContent = (templateName, content, response, callback) => {
+    console.log("Processing content");
+    fs.readFile("./myJsonFile.json", (err, data) => {
+        let body = '';
         if (err) throw err;
-        //console.log("made it here");
         body += data.toString();
-        //console.dir(body);
         fs.readFile('end', () => {
-            masterArray = JSON.parse(body);
-            console.dir(masterArray);
+            let masterArray = JSON.parse(body);
+            // console.log("length of masterArray: " + masterArray.length);
+            //console.log("here's the master array: "+ masterArray);
+            // console.log("in createDivs" + masterArray);
+            let divs = [];
+            for (let i = 2; i < masterArray.length; i++) {
+                let name = masterArray[i].name;
+                let status = masterArray[i].stat;
+                let party = masterArray[i].party;
+                let type = masterArray[i].type;
+                let street = masterArray[i].street;
+                let city = masterArray[i].city;
+                let state = masterArray[i].state;
+                let zip = masterArray[i].zip;
+                let newDiv = "<div class=project " + status +" " +  type + ">" +
+                    "<li>" + name + "</li>" +
+                    "<li>" + party + "</li>" +
+                    "<li>" + street + "</li>" +
+                    "<li>" + city + ", " + state + " " + zip + "</li>" +
+                    "</div>";
+                divs.push(newDiv);
+                //console.log("This is the new div: " + newDiv);
+            }
+            //console.log("returning " + divs.length + " divs from getFileContent: " + divs);
+            let guest_list = '';
+            //console.log("Merging values");
+            for(let i = 0; i<divs.length; i++) {
+                //  console.log("value: " + values[i]);
+                guest_list += divs[i];
+            }
+            //console.log("guest_list: " + guest_list);
+            content = content.replace("{{guest_list}}", guest_list);
         });
     })
+    console.log(content);
+    //callback(templateName, content, response);
+};
+*/
+const view = (templateName, value, response) => {
+    let content = fs.readFileSync('./views/' + templateName + '.html', {encoding: "utf8"});
+    response.write(content);
 };
 
-const storeFileContent = (dataToWrite) => fs.writeFile("./JSON_writeSample.json", dataToWrite, (err) => {
-    if (err) throw err;
-    console.log("Data successfully stored!: " + dataToWrite);
-});
-
-const displayGuestsShort = (theMasterArray) => {
-    let contentArray = theMasterArray.splice(0, 1);
-    //if(myObj.hasOwnProperty("<property name>")){
-    //alert("yes, i have that property");
-    //}
-
-}
-
-const displayGuestsLong = (theMasterArray) => {
-
-
+const onFindContentDone = (templateName, content, response, callback) => {
+    console.log("Finished finding content");
+    callback(templateName, content, response, onProcessContentDone);
 };
 
-const sortedByName = (theMasterArray) => {
-
-
+const onProcessContentDone = (templateName, content, response) => {
+    console.log("Finished processing content");
+    try {
+        response.write(content);
+        console.log("wrote this content: "+ content);
+    } catch (err) {
+        throw err;
+    }
 };
 
-const sortedByStatus = (theMasterArray) => {
-
-
-};
-
-const sortedByType = (theMasterArray) => {
-
-};
-
-module.exports.getFileContent = getFileContent;
-module.exports.storeFileContent = storeFileContent;
+//retrieve.getFileContent();
+//let starting_content = retrieve.getFileContent();
+//startServerNoContent(starting_content);
+let anobject = {a:1,b:'hello'};
+let result = JSON.stringify(anobject);
+//console.log("Stringified OBJECT: "+ result);
+//retrieve.storeFileContent(result);
