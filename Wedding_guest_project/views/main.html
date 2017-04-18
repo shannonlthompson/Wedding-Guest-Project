@@ -1,17 +1,11 @@
 <div id="intro">
     <header>
         <h1 class="shadow">Wedding Guest List</h1>
-        <ul id="header_list">
-            <li>
-                <a href="#portfolio">Guest List</a></li>
-            <li>
-                <a href="#closing">Bottom of List</a></li>
-        </ul>
-
     </header>
     <div id="intro_wrap" class="shadow">
+        <iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
         <p id="intro_text">Add Guests</p>
-        <form id="guest_form" action="../form_handler.js" method="post">
+        <form action="../form_handler.js" method="post" id="guest_form" target="hiddenFrame">
             <div>
                 <label for="name">Name</label>
                 <input type="text" id="name" name="user_name">
@@ -36,6 +30,7 @@
                 <label for="groom">Groom</label>
                 <input type="radio" id="groom" name="guest_type" value="groom">
             </div>
+
             <div>
                 <label id="include">Include on the final guest list?</label>
                 <label for="yes">Yes</label>
@@ -143,13 +138,7 @@
     {{guest_list}}
 </div>
 <div id="closing">
-    <h2>CONTACT</h2>
-    <p id="closing_sent">If you're interested in chatting or want more information about what I've been working on, I'd
-        love to hear from you!</p>
-    <p>Phone <span>+1 (510) 123-4567</span></p>
-    <p>Email <span>shannont@gmail.com</span></p>
     <footer>
-
         <div id="right_footer">
             <a id="mobile_link" href="#intro">BACK TO TOP</a>
             <ul id="desktop_link">

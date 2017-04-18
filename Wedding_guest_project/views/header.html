@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width" , initial-scale="1">
     <title>Wedding Guest List</title>
     <style type="text/css" media="screen">
-        @import url(https://fonts.googleapis.com/css?family=Raleway");
 
         * {
             box-sizing: border-box;
@@ -41,13 +40,20 @@
             border-radius: 25px;
         }
 
+        .project {
+            box-shadow: 1px 1px 1px black,
+            inset 2px 3px 5px rgba(0,0,0,0.5),
+            inset -2px -3px 5px rgba(0,0,0,0.5);
+
+        }
+
         p {
             padding: 0px 10px;
             font-weight: 100;
         }
 
         #intro, #closing {
-            background-image: url("https://static.pexels.com/photos/268415/pexels-photo-268415.jpeg");
+            background-image: url("https://static.pexels.com/photos/207253/pexels-photo-207253.jpeg");
             padding: 10px 0 10px;
         }
 
@@ -57,6 +63,10 @@
 
         #intro img {
             max-height: 160px;
+        }
+
+        ul {
+            list-style: none;
         }
 
         img {
@@ -69,7 +79,28 @@
             font-weight: bold;
             font-size: 1.55em;
             background-color: rgba(249, 249, 249, .7);
-            width:100%
+            width:100%;
+        }
+
+        /* Status borders */
+        .yes {
+            background-color: rgba(46,138,92,0.3);
+        }
+
+        .no {
+            background-color: rgba(204,102,102,0.3);
+        }
+
+        .undecided {
+            background-color: rgba(204,204,102,0.3);
+        }
+
+        .bride {
+            border-image: url("http://www.clker.com/cliparts/4/c/7/a/12836229391686080551tattoo clipart-th.png");
+        }
+
+        .groom {
+            border-image: url("http://www.clker.com/cliparts/4/c/7/a/12836229391686080551tattoo clipart-th.png");
         }
 
 
@@ -92,6 +123,11 @@
             margin: 3px auto;
             cursor: pointer;
         }
+
+        ul {
+            background-color: antiquewhite;
+        }
+
         /* Make phone and email bold */
         span {
             font-weight: 900;
