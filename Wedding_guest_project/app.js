@@ -2,7 +2,6 @@
  * Created by sthompson on 4/11/17.
  */
 const form_handler = require("./form_handler.js");
-const renderer = require("./renderer.js");
 const http = require('http');
 const fs = require('fs');
 const commonHeader = {'Content-type': 'text/html'};
@@ -18,8 +17,12 @@ http.createServer(function (request, response) {
             console.log(request.post);
             createNewDiv(request.post, response, addNewGuest);
             // Use request.post here
-            response.writeHead(200, "OK", {'Content-Type': 'text/plain'});
+            response.writeHead(200, commonHeader);
+            view("header", {}, response);
+            view("main", {}, response);
+            view("footer", {}, response);
             response.end();
+            console.log('Server running at http://localhost:3000/');
         });
     } else if (firstTimeInitiated === 0) {
     response.writeHead(200, commonHeader);
@@ -60,15 +63,25 @@ const helloWorldCheerio = () => {
 };*/
 
 const createNewDiv = (data, response, callback) => {
-
-    let newGuest = "<div class='project" + " " + data.status + " " +  data.type + "'>" +
-        "<p>" + data.user_name + "</p>" +
-        "<p>" + data.guest_number + "</p>" +
-        "<p>" + data.user_address + "</p>" +
-        "<p>" + data.user_city + ", " + data.user_state + " " + data.user_zip + "</p>" +
-        "</div>";
-    console.log(newGuest);
-    callback(newGuest, response, addNewGuest);
+    if(data.userName === "") {
+        let newGuest = "<div class='guest rounded-crn" + "'>" +
+            "<p class='g_name" + "'>" + data.mobile_user_name + "</p>" +
+            "<p class='g_number" + "'>" + data.mobile_guest_number + "</p>" +
+            "<p class='g_type" + "'>" + data.mobile_type + "'s guest</p>" +
+            "<p class='g_status" + "'>" + "On the list? " + data.mobile_status + "</p>"
+            + "</div>";
+        console.log(newGuest);
+        callback(newGuest, response, addNewGuest);
+    } else {
+        let newGuest = "<div class='guest rounded-crn" + "'>" +
+            "<p class='g_name" + "'>" + data.user_name + "</p>" +
+            "<p class='g_number" + "'>" + data.guest_number + "</p>" +
+            "<p class='g_type" + "'>" + data.type + "'s guest</p>" +
+            "<p class='g_status" + "'>" + "On the list? " + data.status + "</p>"
+            + "</div>";
+        console.log(newGuest);
+        callback(newGuest, response, addNewGuest);
+    }
 };
 
 const addNewGuest = (new_guest, response, callback) => {
@@ -87,22 +100,17 @@ const processContent = (templateName, content, response, callback) => {
     //console.log("Processing content");
     let body = fs.readFileSync("./myJsonFile.json");
         let masterArray = JSON.parse(body);
-        //Explain why it starts at 2
-        for (let i = 2; i < masterArray.length; i++) {
+        for (let i = 0; i < masterArray.length; i++) {
             let name = masterArray[i].name;
             let status = masterArray[i].stat;
             let party = masterArray[i].party;
             let type = masterArray[i].type;
-            let street = masterArray[i].street;
-            let city = masterArray[i].city;
-            let state = masterArray[i].state;
-            let zip = masterArray[i].zip;
-            let newDiv = "<div class='project" + " " + status + " " +  type + "'>" +
-                "<p>" + name + "<p/>" +
-                "<p>" + party + "</p>" +
-                "<p>" + street + "</p>" +
-                "<p>" + city + ", " + state + " " + zip + "</p>" +
-                "</div>";
+            let newDiv = "<div class='guest rounded-crn" + "'>" +
+                "<p class='g_name" +"'>" + name + "</p>" +
+                "<p class='g_number" +"'>" + party + "</p>" +
+                "<p class='g_type" +"'>" + type + "'s guest</p>" +
+                "<p class='g_status" +"'>" +"On the list? "+ status + "</p>"
+                + "</div>";
             console.log("New div: " + newDiv);
             currentList.push(newDiv);
         }

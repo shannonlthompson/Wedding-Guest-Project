@@ -1,99 +1,32 @@
-[
-  [{
-    "username": "22shannon",
-    "id": "1"
-  },
-    [{
-      "name": "Shannon T",
-      "idx": "0"
-    }, {
-      "name": "Janie",
-      "idx": "1"
-    }],
-    [{
-      "status": "yes",
-      "idx": "0"
-    }, {
-      "status": "no",
-      "idx": "1"
-    }],
-    [{
-      "type": "bride",
-      "idx": "0"
-    }, {
-      "type": "groom",
-      "idx": "1"
-    }]
-  ],
-  [{
-    "username": "farhad33",
-    "id": "2"
-  },
-    [{
-      "name": "Shannon T",
-      "idx": "0"
-    }, {
-      "name": "Janie",
-      "idx": "1"
-    }],
-    [{
-      "status": "yes",
-      "idx": "0"
-    }, {
-      "status": "no",
-      "idx": "1"
-    }],
-    [{
-      "type": "bride",
-      "idx": "0"
-    }, {
-      "type": "groom",
-      "idx": "1"
-    }]
-  ], {
-  "name": "Shannon T",
+[{
+  "name": "Sarah Williams",
   "stat": "yes",
-  "party": "5",
-  "type": "bride",
-  "street": "3224 Marber Ave",
-  "city": "Long Beach",
-  "state": "CA",
-  "zip": "90808"
+  "party": "2",
+  "type": "bride"
 }, {
-  "name": "Janie",
+  "name": "Jason Keller",
   "stat": "no",
   "party": "1",
-  "type": "groom",
-  "street": "123 Easy St",
-  "city": "Long Beach",
-  "state": "NV",
-  "zip": "98398"
+  "type": "bride"
 }, {
-  "name": "Farhad T",
+  "name": "Snow White",
   "stat": "yes",
   "party": "3",
-  "type": "groom",
-  "street": "77 Almaden Ave",
-  "city": "Long Beach",
-  "state": "CA",
-  "zip": "90808"
+  "type": "groom"
 }, {
-  "name": "Joe",
+  "name": "Michelle Grey",
   "stat": "no",
   "party": "1",
-  "type": "groom",
-  "street": "183 St",
-  "city": "Long Beach",
-  "state": "ND",
-  "zip": "99802"
+  "type": "bride"
 }, {
-  "name": "Susan",
+  "name": "Grace Smith",
   "stat": "yes",
   "party": "1",
-  "type": "groom",
-  "street": "183 St",
-  "city": "Long Beach",
-  "state": "ND",
-  "zip": "99802"
+  "type": "groom"
+}, {
+  "name": "Joy Merris",
+  "stat": "undecided",
+  "party": "1",
+  "type": "groom"
 }
 ]

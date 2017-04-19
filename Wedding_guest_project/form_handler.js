@@ -4,7 +4,6 @@
 var qs = require('querystring');
 var http = require('http');
 
-console.log("Made it here!")
 var http = require('http');
 var querystring = require('querystring');
 
