@@ -4,9 +4,9 @@
             <h1 class="shadow">Wedding Guest List</h1>
         </header>
         <div id="intro_wrap" class="rounded-crn">
-            <form action="../form_handler.js" method="post" id="guest_form">
-                <h2 id="intro_text">Add Guests</h2>
-                <div id="mobile_version">
+            <form action="../form_handler.js" method="post" id="mobile_version">
+                <h2 class="intro_text">Add Guests</h2>
+                <div>
                     <div>
                         <label class="mobile_label" for="name">Name</label>
                         <input type="text" id="mobile_name" name="mobile_user_name">
@@ -25,24 +25,28 @@
                     </div>
                     <div>
                         <label class="mobile_label">Bride or Groom's guest?</label>
-                        <label for="bride">Bride</label>
-                        <input type="radio" id="mobile_bride" name="mobile_guest_type" value="bride">
+                        <label for="mobile_bride">Bride</label>
+                        <input type="radio" id="mobile_bride" name="mobile_guest_type" value="Bride">
 
-                        <label for="groom">Groom</label>
-                        <input type="radio" id="mobile_groom" name="mobile_guest_type" value="groom">
+                        <label for="mobile_groom" class="radio_space">Groom</label>
+                        <input type="radio" id="mobile_groom" name="mobile_guest_type" value="Groom">
                     </div>
 
                     <div>
                         <label id="include" class="mobile_label">Include on the final guest list?</label>
-                        <label for="yes">Yes</label>
+                        <label for="mobile_yes">Yes</label>
                         <input type="radio" id="mobile_yes" name="mobile_status" value="Yes">
-                        <label for="undecided">Not sure</label>
+                        <label for="mobile_undecided" class="radio_space">Not sure</label>
                         <input type="radio" id="mobile_undecided" name="mobile_status" value="Undecided">
-                        <label for="no">No</label>
+                        <label for="mobile_no" class="radio_space">No</label>
                         <input type="radio" id="mobile_no" name="mobile_status" value="No">
                     </div>
                 </div>
-                <div class ="clearfix center_text" id="desktop_version">
+                <button class="rounded-crn" type="submit">Save</button>
+            </form>
+            <form action="../form_handler.js" method="post" id="desktop_version">
+                <h2 class="intro_text">Add Guests</h2>
+                <div class ="clearfix center_text">
                     <div id="left_div">
                         <label id="name-space" for="name">Name</label>
                         <label id="num-space" for="guest_number">Number of people</label>
@@ -61,19 +65,19 @@
                         </select>
                         </div>
                         <div>
-                            <label for="bride">Bride</label>
-                            <input type="radio" id="bride" name="guest_type" value="bride">
+                            <label for="bride" class="radio_space">Bride</label>
+                            <input type="radio" id="bride" name="guest_type" value="Bride">
 
-                            <label for="groom">Groom</label>
-                            <input type="radio" id="groom" name="guest_type" value="groom">
+                            <label for="groom" class="radio_space">Groom</label>
+                            <input type="radio" id="groom" name="guest_type" value="Groom">
                         </div>
                         <div>
                             <label for="yes">Yes</label>
-                            <input type="radio" id="yes" name="status" value="yes">
-                            <label for="undecided">Not sure</label>
-                            <input type="radio" id="undecided" name="status" value="undecided">
-                            <label for="no">No</label>
-                            <input type="radio" id="no" name="status" value="no">
+                            <input type="radio" id="yes" name="status" value="Yes">
+                            <label for="undecided"  class="radio_space">Not sure</label>
+                            <input type="radio" id="undecided" name="status" value="Undecided">
+                            <label for="no" class="radio_space">No</label>
+                            <input type="radio" id="no" name="status" value="No">
                         </div>
                     </div>
                 </div>

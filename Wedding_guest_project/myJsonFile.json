@@ -1,32 +1,32 @@
 [{
   "name": "Sarah Williams",
-  "stat": "yes",
+  "stat": "Yes",
   "party": "2",
-  "type": "bride"
+  "type": "Bride"
 }, {
   "name": "Jason Keller",
-  "stat": "no",
+  "stat": "No",
   "party": "1",
-  "type": "bride"
+  "type": "Bride"
 }, {
   "name": "Snow White",
-  "stat": "yes",
+  "stat": "Yes",
   "party": "3",
-  "type": "groom"
+  "type": "Groom"
 }, {
   "name": "Michelle Grey",
-  "stat": "no",
+  "stat": "No",
   "party": "1",
-  "type": "bride"
+  "type": "Bride"
 }, {
   "name": "Grace Smith",
-  "stat": "yes",
+  "stat": "Yes",
   "party": "1",
-  "type": "groom"
+  "type": "Groom"
 }, {
   "name": "Joy Merris",
-  "stat": "undecided",
+  "stat": "Undecided",
   "party": "1",
-  "type": "groom"
+  "type": "Groom"
 }
 ]

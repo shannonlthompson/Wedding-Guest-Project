@@ -10,7 +10,7 @@ let currentList = [];
 let mainHTML = "";
 let firstTimeInitiated = 0;
 
-//Next: Use the values submitted from the form to the server to handle new form elements
+//Use the values submitted from the form to handle new form elements
 http.createServer(function (request, response) {
     if(request.method == 'POST') {
         form_handler.processPost(request, response, function () {
@@ -63,11 +63,12 @@ const helloWorldCheerio = () => {
 };*/
 
 const createNewDiv = (data, response, callback) => {
-    if(data.userName === "") {
+    //If there's a property with mobile_user_name, the mobile version of the form was filled out
+    if(data.mobile_user_name) {
         let newGuest = "<div class='guest rounded-crn" + "'>" +
             "<p class='g_name" + "'>" + data.mobile_user_name + "</p>" +
             "<p class='g_number" + "'>" + data.mobile_guest_number + "</p>" +
-            "<p class='g_type" + "'>" + data.mobile_type + "'s guest</p>" +
+            "<p class='g_type" + "'>" + data.mobile_guest_type + "'s guest</p>" +
             "<p class='g_status" + "'>" + "On the list? " + data.mobile_status + "</p>"
             + "</div>";
         console.log(newGuest);
@@ -76,7 +77,7 @@ const createNewDiv = (data, response, callback) => {
         let newGuest = "<div class='guest rounded-crn" + "'>" +
             "<p class='g_name" + "'>" + data.user_name + "</p>" +
             "<p class='g_number" + "'>" + data.guest_number + "</p>" +
-            "<p class='g_type" + "'>" + data.type + "'s guest</p>" +
+            "<p class='g_type" + "'>" + data.guest_type + "'s guest</p>" +
             "<p class='g_status" + "'>" + "On the list? " + data.status + "</p>"
             + "</div>";
         console.log(newGuest);

@@ -20,7 +20,6 @@ function processPost(request, response, callback) {
                 request.connection.destroy();
             }
         });
-
         request.on('end', function() {
             request.post = querystring.parse(queryData);
             callback();

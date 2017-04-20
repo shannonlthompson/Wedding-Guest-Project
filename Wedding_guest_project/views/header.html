@@ -6,7 +6,7 @@
     <title>Wedding Guest List</title>
     <style type="text/css" media="screen">
         @import url(http://necolas.github.io/normalize.css/3.0.2/normalize.css);
-        @import url(<link href="https://fonts.googleapis.com/css?family=Raleway:400,600,700,800" rel="stylesheet">);
+        @import url(https://fonts.googleapis.com/css?family=Raleway:400,600,700,800);
 
         * {
             box-sizing: border-box;
@@ -218,7 +218,7 @@
             float: right;
         }
 
-        #intro_text {
+        .intro_text {
             font-size: large;
             padding: 0 15px;
         }
@@ -256,6 +256,11 @@
 
         .error {
             display: none;
+        }
+
+        /* Add space between radio buttons */
+        .radio_space {
+            padding-left: 5px;
         }
 
         /*  =================================
@@ -305,7 +310,7 @@
             }
 
             #intro_wrap {
-                max-width: 498px;
+                max-width: 520px;
                 align-content: center;
                 margin: auto;
                 padding: 10px 0px;
@@ -340,9 +345,8 @@
                 display: inline;
             }
 
-
             /* Position text next to profile image */
-            #intro_text {
+            .intro_text {
                 display: inline-block;
                 padding: 0;
                 margin: 0;
