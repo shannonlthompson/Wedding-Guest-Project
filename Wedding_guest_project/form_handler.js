@@ -8,7 +8,7 @@ var http = require('http');
 var querystring = require('querystring');
 
 function processPost(request, response, callback) {
-    console.log("I'm in processPost!");
+    //console.log("I'm in processPost!");
     var queryData = "";
     if(typeof callback !== 'function') return null;
     if(request.method == 'POST') {
